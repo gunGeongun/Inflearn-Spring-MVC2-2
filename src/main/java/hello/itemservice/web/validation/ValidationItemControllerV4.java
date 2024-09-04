@@ -2,8 +2,6 @@ package hello.itemservice.web.validation;
 
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
-import hello.itemservice.domain.item.SaveCheck;
-import hello.itemservice.domain.item.UpdateCheck;
 import hello.itemservice.web.validation.form.ItemSaveForm;
 import hello.itemservice.web.validation.form.ItemUpdateForm;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +22,7 @@ import java.util.List;
 public class ValidationItemControllerV4 {
 
     private final ItemRepository itemRepository;
+
     @GetMapping
     public String items(Model model) {
         List<Item> items = itemRepository.findAll();
@@ -87,7 +86,7 @@ public class ValidationItemControllerV4 {
             }
         }
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
             return "validation/v4/editForm";
         }
